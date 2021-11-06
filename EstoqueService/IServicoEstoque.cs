@@ -21,7 +21,7 @@ namespace ServicoEstoque
         bool RemoverProduto(string NumeroProduto);
 
         [OperationContract]
-        int ConsultarEstoque(string NumeroProsuto);
+        int ConsultarEstoque(string NumeroProduto);
 
         [OperationContract]
         bool AdicionarEstoque(string NumeroProduto, int Quantidade);
@@ -44,7 +44,7 @@ namespace ServicoEstoque
         bool RemoverEstoque(string NumeroProduto, int Quantidade);
 
         [OperationContract]
-        int ConsultarEstoque(string NumeroProsuto);
+        int ConsultarEstoque(string NumeroProduto);
     }
 
     // Data contract describing the details of a product passed to client applications
