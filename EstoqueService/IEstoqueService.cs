@@ -7,6 +7,32 @@ using System.ServiceModel.Web;
 using System.Text;
 namespace Products
 {
+    // Service contract describing the operations provided by the WCF service (v1)
+    [ServiceContract(Namespace = "http://projetoavaliativo.dm113/01", Name = "IEstoqueService")]
+    public interface IEstoqueService
+    {
+        [OperationContract]
+        List<string> ListarProdutos();
+
+        [OperationContract]
+        bool IncluirProduto(ProductData Produto);
+
+        [OperationContract]
+        bool RemoverProduto(string NumeroProduto);
+
+        [OperationContract]
+        int ConsultarEstoque(string NumeroProsuto);
+
+        [OperationContract]
+        bool AdicionarEstoque(string NumeroProduto, int Quantidade);
+
+        [OperationContract]
+        bool RemoverEstoque(string NumeroProduto, int Quantidade);
+
+        [OperationContract]
+        ProductData VerProduto(string NumeroProduto);
+    }
+
     // Data contract describing the details of a product passed to client applications
     [DataContract]
     public class ProductData
