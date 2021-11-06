@@ -33,6 +33,20 @@ namespace Products
         ProductData VerProduto(string NumeroProduto);
     }
 
+    // Definiçao do contrato de serviço v1
+    [ServiceContract(Namespace = "http://projetoavaliativo.dm113/02", Name = "IEstoqueServiceV2")]
+    public interface IEstoqueServiceV2
+    {
+        [OperationContract]
+        bool AdicionarEstoque(string NumeroProduto, int Quantidade);
+
+        [OperationContract]
+        bool RemoverEstoque(string NumeroProduto, int Quantidade);
+
+        [OperationContract]
+        int ConsultarEstoque(string NumeroProsuto);
+    }
+
     // Data contract describing the details of a product passed to client applications
     [DataContract]
     public class ProductData
