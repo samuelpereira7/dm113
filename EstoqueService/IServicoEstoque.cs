@@ -8,7 +8,7 @@ using System.Text;
 namespace Products
 {
     // Service contract describing the operations provided by the WCF service (v1)
-    [ServiceContract(Namespace = "http://projetoavaliativo.dm113/01", Name = "IEstoqueService")]
+    [ServiceContract(Namespace = "http://projetoavaliativo.dm113/01", Name = "IServicoEstoque")]
     public interface IEstoqueService
     {
         [OperationContract]
@@ -33,8 +33,8 @@ namespace Products
         ProductData VerProduto(string NumeroProduto);
     }
 
-    // Definiçao do contrato de serviço v1
-    [ServiceContract(Namespace = "http://projetoavaliativo.dm113/02", Name = "IEstoqueServiceV2")]
+    // Service contract describing the operations provided by the WCF service (v2)
+    [ServiceContract(Namespace = "http://projetoavaliativo.dm113/02", Name = "IServicoEstoqueV2")]
     public interface IEstoqueServiceV2
     {
         [OperationContract]
