@@ -12,7 +12,55 @@ namespace ServicoEstoque
     RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class EstoqueService : IEstoqueService
     {
-        public bool AdicionarEstoque(string NumeroProduto, int Quantidade)
+        public List<String> ListarProdutos()
+        {
+            List<String> productsList = new List<String>();
+            try
+            {
+                using (ProvedorEstoque database = new ProvedorEstoque())
+                {
+                    List<ProdutoEstoque> products = (from product in database.Products
+                                                     select product).ToList();
+                    foreach (ProdutoEstoque product in products)
+                    {
+                        productsList.Add(product.NomeProduto + " - " + product.EstoqueProduto);
+                    }
+                }
+            }
+            catch
+            {
+                // Ignore exceptions in this implementation
+            }
+
+            return productsList;
+        }
+
+        public bool IncluirProduto(ProductData Produto)
+        {
+            try
+            {
+                using (ProvedorEstoque database = new ProvedorEstoque())
+                {
+                    ProdutoEstoque produtoEstoque = new ProdutoEstoque();
+
+                    produtoEstoque.NumeroProduto = Produto.NumeroProduto;
+                    produtoEstoque.NomeProduto = Produto.NomeProduto;
+                    produtoEstoque.DescricaoProduto = Produto.DescricaoProduto;
+                    produtoEstoque.EstoqueProduto = Produto.EstoqueProduto;
+
+                    database.Products.Add(produtoEstoque);
+                    database.SaveChanges();
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool RemoverProduto(string NumeroProduto)
         {
             try
             {
@@ -21,8 +69,7 @@ namespace ServicoEstoque
                     ProdutoEstoque produtoEstoque = database.Products.First(
                         p => String.Compare(p.NumeroProduto, NumeroProduto) == 0);
 
-                    produtoEstoque.EstoqueProduto = produtoEstoque.EstoqueProduto + Quantidade;
-
+                    database.Products.Remove(produtoEstoque);
                     database.SaveChanges();
                 }
             }
@@ -55,20 +102,17 @@ namespace ServicoEstoque
             return estoqueProduto;
         }
 
-        public bool IncluirProduto(ProductData Produto)
+        public bool AdicionarEstoque(string NumeroProduto, int Quantidade)
         {
             try
             {
                 using (ProvedorEstoque database = new ProvedorEstoque())
                 {
-                    ProdutoEstoque produtoEstoque = new ProdutoEstoque();
+                    ProdutoEstoque produtoEstoque = database.Products.First(
+                        p => String.Compare(p.NumeroProduto, NumeroProduto) == 0);
 
-                    produtoEstoque.NumeroProduto = Produto.NumeroProduto;
-                    produtoEstoque.NomeProduto = Produto.NomeProduto;
-                    produtoEstoque.DescricaoProduto = Produto.DescricaoProduto;
-                    produtoEstoque.EstoqueProduto = Produto.EstoqueProduto;
+                    produtoEstoque.EstoqueProduto = produtoEstoque.EstoqueProduto + Quantidade;
 
-                    database.Products.Add(produtoEstoque);
                     database.SaveChanges();
                 }
             }
@@ -78,31 +122,6 @@ namespace ServicoEstoque
             }
 
             return true;
-
-        }
-
-        public List<String> ListarProdutos()
-        {
-            List<String> productsList = new List<String>();
-            try
-            {
-                using (ProvedorEstoque database = new ProvedorEstoque())
-                {
-                    List<ProdutoEstoque> products = (from product in database.Products
-                                                     select product).ToList();
-                    foreach (ProdutoEstoque product in products)
-                    {
-                        productsList.Add(product.NomeProduto);
-                    }
-                }
-            }
-            catch
-            {
-                // Ignore exceptions in this implementation
-            }
-            
-            // Return the list of products
-            return productsList;
         }
 
         public bool RemoverEstoque(string NumeroProduto, int Quantidade)
@@ -116,27 +135,6 @@ namespace ServicoEstoque
 
                     produtoEstoque.EstoqueProduto = produtoEstoque.EstoqueProduto - Quantidade;
 
-                    database.SaveChanges();
-                }
-            }
-            catch
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        public bool RemoverProduto(string NumeroProduto)
-        {
-            try
-            {
-                using (ProvedorEstoque database = new ProvedorEstoque())
-                {
-                    ProdutoEstoque produtoEstoque = database.Products.First(
-                        p => String.Compare(p.NumeroProduto, NumeroProduto) == 0);
-
-                    database.Products.Remove(produtoEstoque);
                     database.SaveChanges();
                 }
             }
