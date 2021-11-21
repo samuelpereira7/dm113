@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
-using Products;
+using ServicoEstoque;
 
 namespace EstoqueServiceHost
 {
@@ -12,7 +12,7 @@ namespace EstoqueServiceHost
     {
          static void Main(string[] args)
          {
-            ServiceHost productsServiceHost = new ServiceHost(typeof(ProductsService));
+            ServiceHost productsServiceHost = new ServiceHost(typeof(EstoqueService));
             productsServiceHost.Open();
             Console.WriteLine("Service Running");
             Console.ReadLine();

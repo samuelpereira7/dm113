@@ -10,7 +10,7 @@ namespace ServicoEstoque
     // This implementation performs minimal error checking and exception handling
     [AspNetCompatibilityRequirements(
     RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class EstoqueService : IEstoqueService
+    public class EstoqueService : IEstoqueService, IEstoqueServiceV2
     {
         public List<String> ListarProdutos()
         {
