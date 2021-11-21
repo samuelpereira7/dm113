@@ -12,6 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueClient", "EstoqueCli
 		{DA11A0BF-9904-4A81-942F-1141645BE1F4} = {DA11A0BF-9904-4A81-942F-1141645BE1F4}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueServiceHost", "EstoqueServiceHost\EstoqueServiceHost.csproj", "{9C780857-4C4C-4AD6-A0DC-6196638CEC19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueServiceLibrary", "EstoqueServiceLibrary\EstoqueServiceLibrary.csproj", "{EAD1845B-F25E-444E-91D9-D95AE68F5845}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +34,14 @@ Global
 		{6AEA2AFD-904F-4551-B33A-A89C185DE6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AEA2AFD-904F-4551-B33A-A89C185DE6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AEA2AFD-904F-4551-B33A-A89C185DE6AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C780857-4C4C-4AD6-A0DC-6196638CEC19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C780857-4C4C-4AD6-A0DC-6196638CEC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C780857-4C4C-4AD6-A0DC-6196638CEC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C780857-4C4C-4AD6-A0DC-6196638CEC19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD1845B-F25E-444E-91D9-D95AE68F5845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD1845B-F25E-444E-91D9-D95AE68F5845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD1845B-F25E-444E-91D9-D95AE68F5845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD1845B-F25E-444E-91D9-D95AE68F5845}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
